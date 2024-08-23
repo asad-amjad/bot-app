@@ -39,18 +39,23 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload }) => {
     <Card className={`col-md-3 ${styles.leftPanel} shadow`}>
       <CardBody className="d-flex flex-column justify-content-between h-100">
         <div>
-          <div className="mb-3">
+          <div className={`mb-3`}>
             <label className="form-label" htmlFor="query">
-              Enter your query
+              Inputs
             </label>
-            <input
+            <div className={`${styles.topSection}`}>
+              <span>User_Question</span>
+              <br/>
+              <span >Please draft an initial response to the RFP</span>
+              {/* <input
               type="text"
               id="query"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g., Please generate an initial draft response to this RFP"
               className="form-control"
-            />
+            /> */}
+            </div>
           </div>
         </div>
         <div>
