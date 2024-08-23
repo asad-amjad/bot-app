@@ -11,9 +11,10 @@ const Dashboard = () => {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleFileUpload = () => {
-    // const file = event.target.files[0];
-    // Handle file processing and API call
+  const handleFileUpload = (files) => {
+    // Handle the array of files here
+    console.log(files);
+    // You can process the files or make an API call here
   };
 
   const handleQuerySubmit = () => {
@@ -33,7 +34,6 @@ const Dashboard = () => {
           handleQuerySubmit={handleQuerySubmit}
           handleFileUpload={handleFileUpload}
         />
-        {/* Right Panel: Response Display */}
         <Card className={`col-md-9 ${styles.rightPanel} shadow `}>
           <CardBody>
             {loading ? (
@@ -48,7 +48,6 @@ const Dashboard = () => {
                 className={styles.markdownContent}
               />
             )}
-            {/* </div> */}
           </CardBody>
         </Card>
       </Container>

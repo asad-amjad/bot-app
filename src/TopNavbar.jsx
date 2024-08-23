@@ -7,7 +7,7 @@ import reactLogo from "./assets/react.svg";
 
 const TopNavbar = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary shadow">
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <div>
           <a href="https://react.dev" target="_blank">
