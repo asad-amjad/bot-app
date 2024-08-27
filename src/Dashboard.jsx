@@ -3,11 +3,11 @@ import { marked } from "marked";
 import { markdownContent } from "./markdownData";
 import TopNavbar from "./components/navbar/TopNavbar";
 import {
-  Button,
+  // Button,
   Card,
   CardBody,
-  CardFooter,
-  CardHeader,
+  // CardFooter,
+  // CardHeader,
   Container,
 } from "react-bootstrap";
 import LeftPanel from "./LeftPanel";
@@ -16,7 +16,7 @@ import copyIcon from "./assets/copy.svg";
 import downloadIcon from "./assets/download.svg";
 
 const Dashboard = () => {
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
 
