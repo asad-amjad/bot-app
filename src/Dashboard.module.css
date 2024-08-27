@@ -82,11 +82,11 @@
 .contentHeader{
   /* background-color: aqua; */
   display: flex;
+  flex-direction: row;
   justify-content: end;
   gap: 1rem;
-  margin-right: 1rem;
-  /* background-color: red; */
-  padding: 1rem;
+  margin-right: 2rem;
+  padding: 0.5rem;
   margin-top: -1rem;
 }
 

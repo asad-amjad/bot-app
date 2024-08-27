@@ -12,8 +12,9 @@ import {
 } from "react-bootstrap";
 import LeftPanel from "./LeftPanel";
 import styles from "./Dashboard.module.css";
-import copyIcon from "./assets/copy.svg";
-import downloadIcon from "./assets/download.svg";
+import { FiDownload } from "react-icons/fi";
+import { FiCopy } from "react-icons/fi";
+import Tooltip from "./components/tooltip/Tooltip";
 
 const Dashboard = () => {
   // const [query, setQuery] = useState("");
@@ -46,20 +47,20 @@ const Dashboard = () => {
         />
         <Card className={`col-md-9 ${styles.rightPanel} shadow `}>
           <CardBody>
-            <div className={styles.contentHeader}>
-              <img
-                src={copyIcon}
-                className="logo react"
-                alt="React logo"
-                width={20}
-              />
-              <img
-                src={downloadIcon}
-                className="logo react"
-                alt="React logo"
-                width={20}
-              />
+            <div className={`${styles.contentHeader}`}>
+              <Tooltip content="Copy content" place="bottom">
+                <div className="card p-2" role="button">
+                  <FiCopy />
+                </div>
+              </Tooltip>
+
+              <Tooltip content="Download file" place="bottom" >
+                <div className="card p-2" role="button">
+                  <FiDownload />
+                </div>
+              </Tooltip>
             </div>
+
             {loading ? (
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="spinner-border" role="status">

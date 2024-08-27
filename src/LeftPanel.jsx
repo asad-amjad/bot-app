@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Card, CardBody, Badge, CloseButton, Form } from "react-bootstrap";
 import styles from "./Dashboard.module.css";
 import Tooltip from "./components/tooltip/Tooltip"; // Import the enhanced Tooltip component
-import infoIcon from "./assets/info.svg";
 import SubmitButton from "./components/button/Button";
+import { FiInfo } from "react-icons/fi";
 
+// eslint-disable-next-line react/prop-types
 const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
-  const [query, setQuery] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
 
@@ -44,12 +44,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
           <Form.Label>
             Your Question{" "}
             <Tooltip content="Please enter your question here." place="bottom">
-              <img
-                src={infoIcon}
-                className="logo react"
-                alt="React logo"
-                width={16}
-              />
+              <FiInfo />
             </Tooltip>
           </Form.Label>
           <textarea
@@ -96,12 +91,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
               <span className="text-highlight" style={{ cursor: "pointer" }}>
                 browse{" "}
                 <Tooltip content="Supported file type ...(pending)" place="top">
-                  <img
-                    src={infoIcon}
-                    className="logo react"
-                    alt="React logo"
-                    width={16}
-                  />
+                  <FiInfo />
                 </Tooltip>
               </span>
             </label>
