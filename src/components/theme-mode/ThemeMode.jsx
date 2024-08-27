@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
+import { FiMoon } from "react-icons/fi";
+import { FiSun } from "react-icons/fi";
+
 
 const IS_SERVER = typeof window === 'undefined';
 
 let storedTheme = IS_SERVER ? 'light' : localStorage.getItem('theme');
 
 const arrayOfThemes = [
-  { name: 'Light', icon: '☀️' },
-  { name: 'Dark', icon: '🌙' },
+  { name: 'Light', icon: <FiMoon/> },
+  { name: 'Dark', icon: <FiSun/> },
 //   { name: 'Auto', icon: '⚙️' },
 ];
 
@@ -60,7 +63,7 @@ export default function ThemeMode() {
   );
 
   return (
-    <span onClick={toggleTheme} style={{cursor:"pointer"}}>
+    <span onClick={toggleTheme} className='card p-2' role='button'>
       {currentTheme?.icon}
     </span>
   );
