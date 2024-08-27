@@ -5,7 +5,7 @@
   --bg-color-light: #ffffff;
   --text-color-light: #000000;
   --border-color-light: #ccc;
-  --accent-color-light: #3a7bd5; /* Light mode accent color based on logo */
+  --accent-color-light: #0056b3; /* Light mode accent color based on logo */
   --secondary-color-light: #00d2ff; /* Light mode secondary color from logo */
 
   /* Define dark theme variables */
@@ -73,9 +73,9 @@ textarea, input, select {
 textarea::placeholder, input::placeholder {
   color: var(--border-color);
 }
-body{
+/* body{
   
   height: 10vh;
 }
-
+ */
 
