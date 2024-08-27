@@ -1,0 +1,23 @@
+
+.btn-submit-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.btn-submit-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-submit-primary:disabled {
+  background-color: rgba(58, 123, 213, 0.65);
+  border-color: rgba(58, 123, 213, 0.65);
+}
+
+.btn-submit-primary:focus {
+  background-color: var(--accent-color);
+}

@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { marked } from "marked";
 import { markdownContent } from "./markdownData";
-import styles from "./Dashboard.module.css";
-import TopNavbar from "./TopNavbar";
-import { Card, CardBody, Container } from "react-bootstrap";
+import TopNavbar from "./components/navbar/TopNavbar";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Container,
+} from "react-bootstrap";
 import LeftPanel from "./LeftPanel";
+import styles from "./Dashboard.module.css";
+import copyIcon from "./assets/copy.svg";
+import downloadIcon from "./assets/download.svg";
 
 const Dashboard = () => {
   const [query, setQuery] = useState("");
@@ -33,9 +42,24 @@ const Dashboard = () => {
         <LeftPanel
           handleQuerySubmit={handleQuerySubmit}
           handleFileUpload={handleFileUpload}
+          loading={loading}
         />
         <Card className={`col-md-9 ${styles.rightPanel} shadow `}>
           <CardBody>
+            <div className={styles.contentHeader}>
+              <img
+                src={copyIcon}
+                className="logo react"
+                alt="React logo"
+                width={20}
+              />
+              <img
+                src={downloadIcon}
+                className="logo react"
+                alt="React logo"
+                width={20}
+              />
+            </div>
             {loading ? (
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="spinner-border" role="status">

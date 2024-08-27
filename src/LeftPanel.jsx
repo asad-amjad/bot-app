@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Card, CardBody, Badge, CloseButton } from "react-bootstrap";
+import { Card, CardBody, Badge, CloseButton, Form } from "react-bootstrap";
 import styles from "./Dashboard.module.css";
+import Tooltip from "./components/tooltip/Tooltip"; // Import the enhanced Tooltip component
+import infoIcon from "./assets/info.svg";
+import SubmitButton from "./components/button/Button";
 
-// eslint-disable-next-line react/prop-types
-const LeftPanel = ({ handleQuerySubmit, handleFileUpload }) => {
+const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
   const [query, setQuery] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
@@ -38,30 +40,29 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload }) => {
   return (
     <Card className={`col-md-3 ${styles.leftPanel} shadow`}>
       <CardBody className="d-flex flex-column justify-content-between h-100">
-        <div>
-          <div className={`mb-3`}>
-            <label className="form-label" htmlFor="query">
-              Inputs
-            </label>
-            <div className={`${styles.topSection}`}>
-              <span>User_Question</span>
-              <br/>
-              <span >Please draft an initial response to the RFP</span>
-              {/* <input
-              type="text"
-              id="query"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g., Please generate an initial draft response to this RFP"
-              className="form-control"
-            /> */}
-            </div>
-          </div>
-        </div>
+        <Form.Group controlId={"question"} className={styles.querySection}>
+          <Form.Label>
+            Your Question{" "}
+            <Tooltip content="Please enter your question here." place="bottom">
+              <img
+                src={infoIcon}
+                className="logo react"
+                alt="React logo"
+                width={16}
+              />
+            </Tooltip>
+          </Form.Label>
+          <textarea
+            type="text"
+            placeholder="Please draft an initial response to the RFP"
+            className={styles.textArea}
+          />
+        </Form.Group>
+
         <div>
           <div
             className="mb-3 d-flex flex-wrap"
-            style={{ maxHeight: "200px", overflowY: "scroll" }}
+            style={{ maxHeight: "160px", overflowY: "scroll" }}
           >
             {selectedFiles.map((file, index) => (
               <Badge
@@ -71,7 +72,9 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload }) => {
                 className="me-2 mb-2 d-flex align-items-center"
                 style={{ whiteSpace: "pre-wrap" }}
               >
-                {file.name}{" "}
+                <Tooltip content={file.name} place="bottom">
+                  <span>{file.name}</span>
+                </Tooltip>
                 <CloseButton
                   aria-label="Remove"
                   onClick={() => handleFileRemove(index)}
@@ -81,20 +84,25 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload }) => {
               </Badge>
             ))}
           </div>
+
           <div
-            className={`mb-3 p-3 border rounded ${dragging ? "bg-light" : ""}`}
+            className={`${styles.dragSection} ${dragging ? "dragging" : ""}`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
-            <label
-              className="form-label"
-              htmlFor="upload"
-              style={{ display: "block" }}
-            >
-              Drag here or{" "}
-              <span className="text-primary" style={{ cursor: "pointer" }}>
-                Upload files
+            <label className="form-label d-block" htmlFor="upload">
+              Drag and drop files here or{" "}
+              <span className="text-highlight" style={{ cursor: "pointer" }}>
+                browse{" "}
+                <Tooltip content="Supported file type ...(pending)" place="top">
+                  <img
+                    src={infoIcon}
+                    className="logo react"
+                    alt="React logo"
+                    width={16}
+                  />
+                </Tooltip>
               </span>
             </label>
             <input
@@ -106,9 +114,14 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload }) => {
               multiple
             />
           </div>
-          <button onClick={handleQuerySubmit} className="btn btn-primary w-100">
-            Run
-          </button>
+
+          {/* <Tooltip content="Click to submit your query." place="top"> */}
+          <SubmitButton
+            onClick={handleQuerySubmit}
+            isLoading={loading}
+            label="Run"
+          />
+          {/* </Tooltip> */}
         </div>
       </CardBody>
     </Card>

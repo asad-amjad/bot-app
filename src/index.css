@@ -1,11 +1,33 @@
 :root {
+  --primary-color: #0056b3;
+
+  /* Define light theme variables */
+  --bg-color-light: #ffffff;
+  --text-color-light: #000000;
+  --border-color-light: #ccc;
+  --accent-color-light: #3a7bd5; /* Light mode accent color based on logo */
+  --secondary-color-light: #00d2ff; /* Light mode secondary color from logo */
+
+  /* Define dark theme variables */
+  --bg-color-dark: #242424;
+  --text-color-dark: rgba(255, 255, 255, 0.87);
+  --border-color-dark: #555555;
+  --accent-color-dark: #3a7bd5; /* Dark mode accent color based on logo */
+  --secondary-color-dark: #00d2ff; /* Dark mode secondary color from logo */
+
+  /* Set the default theme to light */
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+  --border-color: var(--border-color-light);
+  --accent-color: var(--accent-color-light);
+  --secondary-color: var(--secondary-color-light);
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,6 +36,16 @@
   scroll-behavior: smooth;
 }
 
+/* Dark mode theme application */
+[data-bs-theme="dark"] {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --border-color: var(--border-color-dark);
+  --accent-color: var(--accent-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+}
+
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -26,3 +58,19 @@
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
+/* Styles for textarea and other inputs */
+textarea, input, select {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea::placeholder, input::placeholder {
+  color: var(--border-color);
+}
+

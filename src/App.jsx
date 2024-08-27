@@ -1,12 +1,11 @@
 import SignIn from "./Sign-In";
 import Dashboard from "./Dashboard";
-import "./App.css";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
     <>
-      
       <Router>
         <Routes>
           <Route path={"/dashboard"} element={<Dashboard />} />
