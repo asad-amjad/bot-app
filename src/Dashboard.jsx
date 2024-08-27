@@ -37,8 +37,8 @@ const Dashboard = () => {
   };
 
   return (
-    <>
-      <TopNavbar />
+   
+    
       <Container className={styles.container}>
         <LeftPanel
           handleQuerySubmit={handleQuerySubmit}
@@ -76,7 +76,7 @@ const Dashboard = () => {
           </CardBody>
         </Card>
       </Container>
-    </>
+
   );
 };
 

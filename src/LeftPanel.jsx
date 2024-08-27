@@ -105,13 +105,11 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
             />
           </div>
 
-          {/* <Tooltip content="Click to submit your query." place="top"> */}
           <SubmitButton
             onClick={handleQuerySubmit}
             isLoading={loading}
             label="Run"
           />
-          {/* </Tooltip> */}
         </div>
       </CardBody>
     </Card>

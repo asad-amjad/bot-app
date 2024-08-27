@@ -18,7 +18,7 @@ const TopNavbar = () => {
           />
         </Link>
         <div className="d-flex align-items-center gap-2">
-          <Navbar.Brand href="/dashboard">Logout</Navbar.Brand>
+          {/* <Navbar.Brand href="/dashboard">Logout</Navbar.Brand> */}
           <ThemeMode />
         </div>
       </Container>

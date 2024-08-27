@@ -1,54 +1,42 @@
-// import React from 'react';
-
+import { Card, CardBody, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import SubmitButton from "./components/button/Button";
 
 const SignIn = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-light">
-      <div
-        className="bg-white p-4 rounded shadow-lg"
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "84vh" }}
+    >
+      <Card
+        className={` shadow p-4`}
         style={{ maxWidth: "450px", width: "100%" }}
       >
-        <h2 className="text-center mb-4">Login</h2>
-        <form>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="email">
-              Email Address
-            </label>
-            <input
-              className="form-control"
-              type="email"
-              id="email"
-              placeholder="Enter your email"
+        <CardBody>
+          <h2 className="text-center mb-4">Login</h2>
+          <Form>
+            <Form.Group controlId="email" className={"mb-4"}>
+              <Form.Label>Email:</Form.Label>
+              <input type="text" placeholder="Enter your email" />
+            </Form.Group>
+
+            <Form.Group controlId="password" className={"mb-4"}>
+              <Form.Label>Password:</Form.Label>
+              <input type="password" placeholder="Enter your password" />
+            </Form.Group>
+
+            <SubmitButton
+            className="mt-4"
+              onClick={() => navigate("/dashboard")}
+              isLoading={false}
+              label="Sign in"
             />
-          </div>
-          <div className="mb-4">
-            <label className="form-label" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="form-control"
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button
-            className="btn btn-primary w-100"
-            type="submit"
-            onClick={() => navigate("/dashboard")}
-          >
-            Sign In
-          </button>
-          <div className="text-center mt-3">
-            <a className="text-primary" href="#">
-              Forgot Password?
-            </a>
-          </div>
-        </form>
-      </div>
+           
+          </Form>
+        </CardBody>
+      </Card>
     </div>
   );
 };
