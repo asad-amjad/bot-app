@@ -1,0 +1,13 @@
+/* SignIn.module.css */
+.noBorderMobile {
+    border: none;
+    box-shadow: none !important;
+  }
+  
+  @media (min-width: 768px) {
+    .noBorderMobile {
+       border: 1px solid #dee2e6;
+       box-shadow: var(--bs-box-shadow) !important;
+    }
+  }
+  
