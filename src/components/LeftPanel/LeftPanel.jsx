@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Card, CardBody, Badge, CloseButton, Form } from "react-bootstrap";
-import styles from "./Dashboard.module.css";
-import Tooltip from "./components/tooltip/Tooltip"; // Import the enhanced Tooltip component
-import SubmitButton from "./components/button/Button";
+import styles from "./LeftPanel.module.css";
+import Tooltip from "../tooltip/Tooltip"; // Import the enhanced Tooltip component
+import SubmitButton from "../button/Button";
 import { FiInfo } from "react-icons/fi";
 
 // eslint-disable-next-line react/prop-types

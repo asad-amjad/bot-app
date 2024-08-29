@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { marked } from "marked";
-import { markdownContent } from "./markdownData";
-import TopNavbar from "./components/navbar/TopNavbar";
+import { markdownContent } from "../../markdownData";
+import TopNavbar from "../../components/navbar/TopNavbar";
 import {
   // Button,
   Card,
@@ -10,11 +10,11 @@ import {
   // CardHeader,
   Container,
 } from "react-bootstrap";
-import LeftPanel from "./LeftPanel";
+import LeftPanel from "../../components/LeftPanel/LeftPanel";
 import styles from "./Dashboard.module.css";
 import { FiDownload } from "react-icons/fi";
 import { FiCopy } from "react-icons/fi";
-import Tooltip from "./components/tooltip/Tooltip";
+import Tooltip from "../../components/tooltip/Tooltip";
 
 const Dashboard = () => {
   // const [query, setQuery] = useState("");

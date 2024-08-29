@@ -1,62 +1,23 @@
-.container {
-  /* min-height: 92vh; */
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding: 2rem; */
-  padding-top: 2rem;
-  flex-direction: row;
-  gap: 2rem;
-}
-
 .leftPanel {
   padding: 1rem;
   min-height: 80vh;
-}
-
-.rightPanel {
-  padding: 1rem;
-  height: 80vh;
 }
 .querySection {
   display: flex;
   flex-direction: column;
 }
-/* .leftPanel .topSection {
- background-color: rgb(99 99 99 / 12%);
- border-radius: 5px;
- padding: 7px 10px;
- font-size: 12px;
- /* line-height: 3  px; */
-/* }  */
 
 .leftPanel .textArea {
-  /* background-color: var(--drag-bg-color, #f9f9f9); */
   padding: 1rem;
   border-radius: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  /* padding: 7px 10px; */
-  /* font-size: 12px; */
 }
 
-.rightPanel {
-  /* margin-left: 2rem; */
-  overflow: hidden;
-}
-
-.markdownContent {
-  height: 35%;
-  overflow-y: auto;
-}
-
-/* Drag Section Styles */
 .dragSection {
   height: 100px;
   display: flex;
   margin-bottom: 2rem;
   padding: 1rem;
-  /* background-color: var(--drag-bg-color, #f9f9f9); */
   border: 3px dotted var(--primary-color);
   border-radius: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -68,18 +29,14 @@
 }
 
 .dragSection .drag-text {
-  /* text-align: center; */
-  /* font-size: 1rem; */
-  /* color: var(--primary-color); */
-  /* font-weight: 500; */
   transition: color 0.3s ease;
 }
 
-.dragSectionn .drag-text:hover {
+.dragSection .drag-text:hover {
   color: var(--primary-color);
 }
 
-.contentHeader{
+.contentHeader {
   /* background-color: aqua; */
   display: flex;
   flex-direction: row;
@@ -96,15 +53,9 @@
     flex-direction: column;
   }
 
-  .leftPanel,
-  .rightPanel {
+  .leftPanel {
     width: 100%;
     height: auto;
-  }
-
-  .rightPanel {
-    margin-left: 0;
-    margin-top: 1rem;
   }
 }
 
@@ -114,14 +65,9 @@
     flex-direction: column;
   }
 
-  .leftPanel,
-  .rightPanel {
+  .leftPanel {
     width: 100%;
     margin-bottom: 1rem;
     height: auto;
-  }
-
-  .rightPanel {
-    margin-left: 0;
   }
 }

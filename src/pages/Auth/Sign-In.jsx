@@ -1,6 +1,6 @@
 import { Card, CardBody, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import SubmitButton from "./components/button/Button";
+import SubmitButton from "../../components/button/Button";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -28,12 +28,11 @@ const SignIn = () => {
             </Form.Group>
 
             <SubmitButton
-            className="mt-4"
+              className="mt-4"
               onClick={() => navigate("/dashboard")}
               isLoading={false}
               label="Sign in"
             />
-           
           </Form>
         </CardBody>
       </Card>

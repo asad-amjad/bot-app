@@ -1,27 +1,23 @@
-import { useState, useEffect } from 'react';
-import { FiMoon } from "react-icons/fi";
-import { FiSun } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { FiMoon, FiSun } from "react-icons/fi";
 
+const IS_SERVER = typeof window === "undefined";
 
-const IS_SERVER = typeof window === 'undefined';
+let storedTheme = IS_SERVER ? "light" : localStorage.getItem("theme");
 
-let storedTheme = IS_SERVER ? 'light' : localStorage.getItem('theme');
+// const arrayOfThemes = [
+//   { name: "Light", icon: <FiSun /> },
+//   { name: "Dark", icon: <FiMoon /> },
+// ];
 
-const arrayOfThemes = [
-  { name: 'Light', icon: <FiMoon/> },
-  { name: 'Dark', icon: <FiSun/> },
-//   { name: 'Auto', icon: '⚙️' },
-];
-
-// Modifies the html root element
 function modifyDOM(theme) {
   if (
-    theme === 'auto' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
+    theme === "auto" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    document.documentElement.setAttribute('data-bs-theme', 'dark');
+    document.documentElement.setAttribute("data-bs-theme", "dark");
   } else {
-    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.setAttribute("data-bs-theme", theme);
   }
 }
 
@@ -30,7 +26,7 @@ export default function ThemeMode() {
 
   useEffect(() => {
     if (IS_SERVER) return;
-    modifyDOM(mode); 
+    modifyDOM(mode);
   }, [mode]);
 
   function getPreferredTheme() {
@@ -38,33 +34,69 @@ export default function ThemeMode() {
       return storedTheme;
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   }
 
   function setPreferredTheme(theme) {
     modifyDOM(theme);
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
     setMode(theme);
   }
 
-  function toggleTheme() {
-    const currentIndex = arrayOfThemes.findIndex(
-      (theme) => theme.name.toLowerCase() === mode
-    );
-    const nextIndex = (currentIndex + 1) % arrayOfThemes.length;
-    const nextTheme = arrayOfThemes[nextIndex].name.toLowerCase();
-    setPreferredTheme(nextTheme);
-  }
-
-  const currentTheme = arrayOfThemes.find(
-    (theme) => theme.name.toLowerCase() === mode
-  );
+  const toggleTheme = () => {
+    const newTheme = mode === "dark" ? "light" : "dark";
+    setPreferredTheme(newTheme);
+  };
 
   return (
-    <span onClick={toggleTheme} className='card p-2' role='button'>
-      {currentTheme?.icon}
-    </span>
+    <div
+      className="form-check form-switch"
+      style={{ position: "relative", display: "flex", alignItems: "center" }}
+    >
+      <input
+        className="form-check-input"
+        type="checkbox"
+        id="themeSwitch"
+        checked={mode === "dark"}
+        onChange={toggleTheme}
+        style={{
+          cursor: "pointer",
+          width: "48px",
+          height: "8px",
+          position: "relative",
+          background: "gray",
+          borderRadius: "12px",
+          border: "none",
+          outline: "none",
+          boxShadow: "none",
+        }}
+      />
+      <label
+        className="form-check-label"
+        htmlFor="themeSwitch"
+        style={{
+          position: "absolute",
+          top: "1px",
+          left: mode === "dark" ? "26px" : "2px",
+          width: "25px",
+          height: "25px",
+          transition: "left 0.3s",
+          pointerEvents: "none",
+          background: "#000",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {mode === "dark" ? (
+          <FiMoon style={{ fontSize: "15px", color: "#fff" }} />
+        ) : (
+          <FiSun style={{ fontSize: "15px", color: "#fff" }} />
+        )}
+      </label>
+    </div>
   );
 }
