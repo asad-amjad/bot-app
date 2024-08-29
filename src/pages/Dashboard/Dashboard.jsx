@@ -79,28 +79,29 @@ const Dashboard = () => {
       <Card className={`col-md-9 ${styles.rightPanel} shadow`}>
         <CardBody className={styles.cardBody}  id="response-area">
           {response && (
-            <div className={styles.contentHeader}>
-              <img src={rfpLogo} alt="RFP logo" width={140} />
-              <div className="d-flex align-items-center gap-2">
-                <Tooltip content="Copy content" place="left">
-                  <div className="card p-2" role="button">
-                    <FiCopy />
-                  </div>
-                </Tooltip>
-
-                <Tooltip content="Download file" place="left">
-                  <div className="card p-2" role="button">
-                    <FiDownload />
-                  </div>
-                </Tooltip>
-                
-                 <Tooltip content="Clear" place="right">
-                  <div className="card p-2" role="button" onClick={()=>setResponse("")}>
-                    <FiDelete />
-                  </div>
-                </Tooltip>
-              </div>
+            <div className={`${styles.contentHeader} d-flex justify-content-between align-items-center`}>
+            <img src={rfpLogo} alt="RFP logo" width={140} className="mx-auto" />
+            <div className="" style={{position: "absolute",right: "35px"}}>
+              <Tooltip content="Copy content" place="left">
+                <div className="card p-2 me-2" role="button">
+                  <FiCopy />
+                </div>
+              </Tooltip>
+          
+              <Tooltip content="Download file" place="left">
+                <div className="card p-2 me-2" role="button">
+                  <FiDownload />
+                </div>
+              </Tooltip>
+              
+              <Tooltip content="Clear" place="right">
+                <div className="card p-2" role="button" onClick={()=>setResponse("")}>
+                  <FiDelete />
+                </div>
+              </Tooltip>
             </div>
+          </div>
+          
           )}
 
           <div
