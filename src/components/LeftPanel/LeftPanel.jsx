@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { Card, CardBody, Badge, CloseButton, Form } from "react-bootstrap";
+import { Card, CardBody, Badge, CloseButton, Form, Alert } from "react-bootstrap";
 import styles from "./LeftPanel.module.css";
 import Tooltip from "../tooltip/Tooltip";
 import SubmitButton from "../button/Button";
@@ -9,11 +8,20 @@ import { FiInfo } from "react-icons/fi";
 const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
+  const [error, setError] = useState(""); // State to track error messages
 
   const handleFileChange = (event) => {
     const filesArray = Array.from(event.target.files);
-    setSelectedFiles((prevFiles) => [...prevFiles, ...filesArray]);
-    handleFileUpload(filesArray);
+    const pdfFiles = filesArray.filter((file) => file.type === "application/pdf");
+
+    if (pdfFiles.length < filesArray.length) {
+      setError("Only PDF files are allowed.");
+    } else {
+      setError(""); // Clear error if only PDFs are selected
+    }
+
+    setSelectedFiles((prevFiles) => [...prevFiles, ...pdfFiles]);
+    handleFileUpload(pdfFiles);
   };
 
   const handleDragOver = (event) => {
@@ -29,8 +37,16 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
     event.preventDefault();
     setDragging(false);
     const filesArray = Array.from(event.dataTransfer.files);
-    setSelectedFiles((prevFiles) => [...prevFiles, ...filesArray]);
-    handleFileUpload(filesArray);
+    const pdfFiles = filesArray.filter((file) => file.type === "application/pdf");
+
+    if (pdfFiles.length < filesArray.length) {
+      setError("Only PDF files are allowed.");
+    } else {
+      setError(""); // Clear error if only PDFs are selected
+    }
+
+    setSelectedFiles((prevFiles) => [...prevFiles, ...pdfFiles]);
+    handleFileUpload(pdfFiles);
   };
 
   const handleFileRemove = (index) => {
@@ -56,6 +72,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
         </Form.Group>
 
         <div>
+          {error && <Alert variant="danger" dismissible >{error}</Alert>} {/* Show error message */}
           <div
             className="mb-3 d-flex flex-wrap"
             style={{ maxHeight: "160px", overflowY: "scroll" }}
@@ -92,7 +109,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
               Drag and drop files here or{" "}
               <span className="text-highlight" style={{ cursor: "pointer" }}>
                 browse{" "}
-                <Tooltip content="Supported file type ...(pending)" place="top">
+                <Tooltip content="Supported file type: PDF" place="top">
                   <FiInfo />
                 </Tooltip>
               </span>
@@ -104,6 +121,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
               className="form-control"
               style={{ display: "none" }}
               multiple
+              accept="application/pdf"
             />
           </div>
 
