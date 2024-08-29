@@ -37,7 +37,7 @@ const Dashboard = () => {
         <CardBody className={styles.cardBody}>
           {response && (
             <div className={styles.contentHeader}>
-              <img src={rfpLogo} alt="RFP logo" width={100} />
+              <img src={rfpLogo} alt="RFP logo" width={140} />
               <div className="d-flex align-items-center gap-2">
                 <Tooltip content="Copy content" place="bottom">
                   <div className="card p-2" role="button">
@@ -54,29 +54,46 @@ const Dashboard = () => {
             </div>
           )}
 
-          {!response && !loading && (
-            <div className="d-flex justify-content-center flex-column align-items-center h-75">
-              <img
-                src={rfpLogo}
-                className={styles.rfplogo}
-                alt="RFP logo"
-                width={350}
-              />
-            </div>
-          )}
-
-          {loading ? (
-            <div className="d-flex justify-content-center align-items-center h-75">
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
+          <div
+            className={` ${response && "card"} p-4`}
+            style={{ height: response ? "60vh" : "50vh" }}
+          >
+            {!response && (
+              <div
+                className="d-flex justify-content-center flex-column align-items-center"
+                style={{ height: "80vh" }}
+              >
+                <img
+                  src={rfpLogo}
+                  className={styles.rfplogo}
+                  alt="RFP logo"
+                  width={400}
+                />
+                <div className="h-25 mt-4">
+                {loading && (
+                  <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                )}
+                </div>
               </div>
-            </div>
-          ) : (
-            <div
-              dangerouslySetInnerHTML={{ __html: marked(response) }}
-              className={styles.markdownContent}
-            />
-          )}
+            )}
+
+            {/* {loading ? (
+              <div className="d-flex justify-content-center align-items-center">
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            ) : ( */}
+            {!loading && response && (
+              <div
+                dangerouslySetInnerHTML={{ __html: marked(response) }}
+                className={`${styles.markdownContent}`}
+              />
+            )}
+            {/* )} */}
+          </div>
         </CardBody>
       </Card>
     </Container>
