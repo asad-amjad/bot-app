@@ -9,6 +9,11 @@ import { FiDownload } from "react-icons/fi";
 import { FiCopy } from "react-icons/fi";
 import Tooltip from "../../components/tooltip/Tooltip";
 import rfpLogo from "../../assets/rfp.png";
+import { FiTrash } from "react-icons/fi";
+import { FiTrash2 } from "react-icons/fi";
+import { FiDelete } from "react-icons/fi";
+
+
 
 const Dashboard = () => {
   const [response, setResponse] = useState("");
@@ -69,6 +74,7 @@ const Dashboard = () => {
         handleQuerySubmit={handleQuerySubmit}
         handleFileUpload={handleFileUpload}
         loading={loading}
+        response={response}
       />
       <Card className={`col-md-9 ${styles.rightPanel} shadow`}>
         <CardBody className={styles.cardBody}  id="response-area">
@@ -76,15 +82,21 @@ const Dashboard = () => {
             <div className={styles.contentHeader}>
               <img src={rfpLogo} alt="RFP logo" width={140} />
               <div className="d-flex align-items-center gap-2">
-                <Tooltip content="Copy content" place="bottom">
+                <Tooltip content="Copy content" place="left">
                   <div className="card p-2" role="button">
                     <FiCopy />
                   </div>
                 </Tooltip>
 
-                <Tooltip content="Download file" place="bottom">
+                <Tooltip content="Download file" place="left">
                   <div className="card p-2" role="button">
                     <FiDownload />
+                  </div>
+                </Tooltip>
+                
+                 <Tooltip content="Clear" place="right">
+                  <div className="card p-2" role="button" onClick={()=>setResponse("")}>
+                    <FiDelete />
                   </div>
                 </Tooltip>
               </div>

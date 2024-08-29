@@ -5,7 +5,7 @@ import Tooltip from "../tooltip/Tooltip";
 import SubmitButton from "../button/Button";
 import { FiInfo } from "react-icons/fi";
 
-const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
+const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading, response }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState(""); // State to track error messages
@@ -56,6 +56,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
   return (
     <Card className={`col-md-3 ${styles.leftPanel} shadow`}>
       <CardBody className="d-flex flex-column justify-content-between h-100">
+        
         <Form.Group controlId={"question"} className={styles.querySection}>
           <Form.Label>
             Your Question{" "}

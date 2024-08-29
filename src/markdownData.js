@@ -23,9 +23,31 @@ Here, you will find detailed information about the topic. For example:
 - **Item 2**: Description of the second item.
 - **Item 3**: Description of the third item.
 
+### Code Example
+
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+\`\`\`
+
+### Blockquote
+
+> This is an example of a blockquote. It's useful for emphasizing a quote or citation.
+
+### Table
+
+| Name     | Age | Location      |
+|----------|-----|---------------|
+| John Doe | 25  | New York      |
+| Jane Doe | 28  | San Francisco |
+
 ## Conclusion
 
-The conclusion wraps up the document. It provides final thoughts and summaries the key takeaways.
+The conclusion wraps up the document. It provides final thoughts and summarizes the key takeaways.
+
+---
+
 ### Hi there, I'm Asad Amjad! 👋
 
 - 🔭 I’m currently working on building high-quality web and mobile applications using the MERN stack.
@@ -55,6 +77,7 @@ The conclusion wraps up the document. It provides final thoughts and summaries t
 
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat)
 ![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white&style=flat)
-![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?logo=laravel&logo
+![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?logo=laravel&logoColor=white&style=flat)
 
+---
 `;
