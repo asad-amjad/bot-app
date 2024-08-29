@@ -26,13 +26,16 @@
 .contentHeader {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: space-between;
   gap: 1rem;
-  margin-right: 2rem;
-  padding: 0.5rem;
-  margin-top: -1rem;
+  /* margin-right: 2rem; */
+  padding: 1rem 0;
+  margin-top: -2rem;
 }
-
+.rfpCenterlogo {
+  display: flex;
+  justify-content: center;
+}
 /* Responsive Design for Tablet */
 @media (max-width: 1024px) {
   .container {
