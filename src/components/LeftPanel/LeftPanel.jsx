@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Card, CardBody, Badge, CloseButton, Form } from "react-bootstrap";
 import styles from "./LeftPanel.module.css";
-import Tooltip from "../tooltip/Tooltip"; // Import the enhanced Tooltip component
+import Tooltip from "../tooltip/Tooltip";
 import SubmitButton from "../button/Button";
 import { FiInfo } from "react-icons/fi";
 
-// eslint-disable-next-line react/prop-types
 const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
@@ -13,7 +13,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
   const handleFileChange = (event) => {
     const filesArray = Array.from(event.target.files);
     setSelectedFiles((prevFiles) => [...prevFiles, ...filesArray]);
-    handleFileUpload(filesArray); // Pass the files to the parent handler if needed
+    handleFileUpload(filesArray);
   };
 
   const handleDragOver = (event) => {
@@ -30,7 +30,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
     setDragging(false);
     const filesArray = Array.from(event.dataTransfer.files);
     setSelectedFiles((prevFiles) => [...prevFiles, ...filesArray]);
-    handleFileUpload(filesArray); // Pass the files to the parent handler if needed
+    handleFileUpload(filesArray);
   };
 
   const handleFileRemove = (index) => {
@@ -48,6 +48,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
             </Tooltip>
           </Form.Label>
           <textarea
+            id="question-field"
             type="text"
             placeholder="Please draft an initial response to the RFP"
             className={styles.textArea}
@@ -81,6 +82,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
           </div>
 
           <div
+            id="file-upload-section"
             className={`${styles.dragSection} ${dragging ? "dragging" : ""}`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -106,6 +108,7 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading }) => {
           </div>
 
           <SubmitButton
+            id="run-button"
             onClick={handleQuerySubmit}
             isLoading={loading}
             label="Run"
