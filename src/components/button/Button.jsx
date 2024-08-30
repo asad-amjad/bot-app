@@ -14,19 +14,19 @@ const SubmitButton = ({ id, onClick, isLoading, label, className = "" }) => {
   );
 };
 
-SubmitButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool,
-  label: PropTypes.string,
-  className: PropTypes.string,
-  id: PropTypes.string,
-};
+// SubmitButton.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+//   isLoading: PropTypes.bool,
+//   label: PropTypes.string,
+//   className: PropTypes.string,
+//   id: PropTypes.string,
+// };
 
-SubmitButton.defaultProps = {
-  isLoading: false,
-  label: "Submit",
-  className: "",
-  id: "",
-};
+// SubmitButton.defaultProps = {
+//   isLoading: false,
+//   label: "Submit",
+//   className: "",
+//   id: "",
+// };
 
 export default SubmitButton;
