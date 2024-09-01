@@ -1,5 +1,3 @@
-// backend/server.js
-
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -14,7 +12,14 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:5173/', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
