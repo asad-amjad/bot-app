@@ -3,7 +3,7 @@ import Joyride from "react-joyride";
 import { marked } from "marked";
 import { markdownContent } from "../../markdownData";
 import { Card, CardBody, Container } from "react-bootstrap";
-import LeftPanel from "../../components/LeftPanel/LeftPanel";
+import LeftPanel from "../../components/LeftPanel";
 import styles from "./Dashboard.module.css";
 import { FiDownload } from "react-icons/fi";
 import { FiCopy } from "react-icons/fi";

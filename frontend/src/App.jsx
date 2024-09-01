@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "../AuthContext";
 import { ToastContainer } from "react-toastify";
-import TopNavbar from "./components/Navbar/Navbar";
+import TopNavbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";

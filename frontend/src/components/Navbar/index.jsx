@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import reactLogo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import ThemeMode from "../ThemeMode/ThemeMode";
+import ThemeMode from "../ThemeMode";
 import { useAuth } from "../../../AuthContext"; // Import useAuth
 import { FiLogOut } from "react-icons/fi";
 import Tooltip from "../Tooltip";
