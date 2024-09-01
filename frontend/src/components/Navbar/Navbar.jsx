@@ -6,7 +6,7 @@ import ThemeMode from "../ThemeMode/ThemeMode";
 import { useAuth } from "../../../AuthContext"; // Import useAuth
 import { FiLogOut } from "react-icons/fi";
 import Tooltip from "../Tooltip/Tooltip";
-import "./styles.css";
+import "./Navbar.css";
 
 const TopNavbar = () => {
   const { setIsAuthenticated, isAuthenticated } = useAuth();
