@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
-import Tooltip from "../Tooltip/Tooltip";
+import Tooltip from "../Tooltip";
 
 const IS_SERVER = typeof window === "undefined";
 
