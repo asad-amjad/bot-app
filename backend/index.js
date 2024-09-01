@@ -1,7 +1,7 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const connectDB = require('./config/db');
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const connectDB = require("./config/db");
 
 dotenv.config();
 
@@ -14,20 +14,15 @@ const app = express();
 app.use(express.json());
 // app.use(cors());
 
-app.use(cors({
-  origin: ['http://localhost:5173/', 'http://localhost:5173', "https://preeminent-kelpie-d4b81f.netlify.app"],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
+app.use(cors("*"));
 
 // Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/user', require('./routes/userRoutes'));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/user", require("./routes/userRoutes"));
 
 // Error Handling for Undefined Routes
 app.use((req, res) => {
-  res.status(404).json({ message: 'API route not found' });
+  res.status(404).json({ message: "API route not found" });
 });
 
 // Start Server
