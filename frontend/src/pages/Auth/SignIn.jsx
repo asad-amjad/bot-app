@@ -1,15 +1,15 @@
+import * as yup from "yup";
 import { useState } from "react";
 import { Card, CardBody, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import SubmitButton from "../../components/button/Button";
+import SubmitButton from "../../components/Button/Button";
 import rfpLogo from "../../assets/rfp.png";
 import styles from "./Auth.module.css";
-import { useAuth } from "../../../AuthContext"; // Import useAuth
+import { useAuth } from "../../../AuthContext";
 
 // Define validation schema using yup
 const schema = yup.object().shape({
@@ -44,7 +44,7 @@ const SignIn = () => {
         const { token } = response.data.data;
         localStorage.setItem("authToken", token);
         setIsAuthenticated(true); // Update auth state in context
-        toast.success("Login successful!");
+        // toast.success("Login successful!");
         navigate("/dashboard"); // Redirect to dashboard
       } else {
         toast.error("Invalid credentials. Please try again.");

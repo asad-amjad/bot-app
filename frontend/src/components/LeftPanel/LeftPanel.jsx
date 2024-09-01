@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Card, CardBody, Badge, CloseButton, Form, Alert } from "react-bootstrap";
 import styles from "./LeftPanel.module.css";
-import Tooltip from "../tooltip/Tooltip";
-import SubmitButton from "../button/Button";
+import Tooltip from "../Tooltip/Tooltip";
+import SubmitButton from "../Button/Button";
 import { FiInfo } from "react-icons/fi";
 
 const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading, response }) => {

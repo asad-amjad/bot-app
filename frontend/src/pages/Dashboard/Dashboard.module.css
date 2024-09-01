@@ -1,17 +1,18 @@
 .container {
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  /* align-items: center; */
   padding-top: 2rem;
   flex-direction: row;
-  gap: 4rem;
+  /* gap: rem; */
 }
 
 .rightPanel {
   padding: 1rem;
   height: 80vh;
   overflow: hidden;
+  width: 70%;
 }
 
 

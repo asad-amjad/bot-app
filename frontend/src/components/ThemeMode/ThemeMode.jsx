@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
+import Tooltip from "../Tooltip/Tooltip";
 
 const IS_SERVER = typeof window === "undefined";
 
@@ -55,6 +56,7 @@ export default function ThemeMode() {
       className="form-check form-switch"
       style={{ position: "relative", display: "flex", alignItems: "center" }}
     >
+      <Tooltip content="Theme mode" place="bottom">
       <input
         className="form-check-input"
         type="checkbox"
@@ -63,8 +65,8 @@ export default function ThemeMode() {
         onChange={toggleTheme}
         style={{
           cursor: "pointer",
-          width: "48px",
-          height: "8px",
+          width: "45px",
+          height: "2px",
           position: "relative",
           background: "gray",
           borderRadius: "12px",
@@ -91,12 +93,14 @@ export default function ThemeMode() {
           justifyContent: "center",
         }}
       >
+
         {mode === "dark" ? (
           <FiMoon style={{ fontSize: "15px", color: "#fff" }} />
         ) : (
           <FiSun style={{ fontSize: "15px", color: "#fff" }} />
         )}
       </label>
+        </Tooltip>
     </div>
   );
 }

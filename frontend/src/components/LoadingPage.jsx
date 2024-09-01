@@ -1,13 +1,9 @@
-// LoadingPage.js
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
-// import './LoadingPage.css'; // Import the CSS file for styling
+import { Spinner } from "react-bootstrap";
 
 const LoadingPage = () => {
   return (
     <div className="loading-page">
-      <Spinner/>
-     
+      <Spinner />
     </div>
   );
 };
