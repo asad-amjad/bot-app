@@ -1,8 +1,7 @@
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useId } from "react";
 
-// Reusable Tooltip wrapper component
-// eslint-disable-next-line react/prop-types
+
 const Tooltip = ({ children, content, place = "top", ...props }) => {
   const tooltipId = useId(); // Generate a unique ID for the tooltip
 

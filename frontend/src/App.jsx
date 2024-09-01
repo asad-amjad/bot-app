@@ -5,7 +5,7 @@ import TopNavbar from "./components/navbar/TopNavbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
-import LoadingPage from "./components/LoadingPage"; // Import LoadingPage
+// import LoadingPage from "./components/LoadingPage"; // Import LoadingPage
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 

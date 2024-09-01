@@ -5,9 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import ThemeMode from "../ThemeMode/ThemeMode";
 import { useAuth } from "../../../AuthContext"; // Import useAuth
 import { FiLogOut } from "react-icons/fi";
-
-import "./styles.css";
 import Tooltip from "../Tooltip/Tooltip";
+import "./styles.css";
 
 const TopNavbar = () => {
   const { setIsAuthenticated, isAuthenticated } = useAuth();
