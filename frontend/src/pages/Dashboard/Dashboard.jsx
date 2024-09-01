@@ -9,8 +9,8 @@ import { FiDownload } from "react-icons/fi";
 import { FiCopy } from "react-icons/fi";
 import Tooltip from "../../components/Tooltip/Tooltip";
 import rfpLogo from "../../assets/rfp.png";
-import { FiTrash } from "react-icons/fi";
-import { FiTrash2 } from "react-icons/fi";
+// import { FiTrash } from "react-icons/fi";
+// import { FiTrash2 } from "react-icons/fi";
 import { FiDelete } from "react-icons/fi";
 
 

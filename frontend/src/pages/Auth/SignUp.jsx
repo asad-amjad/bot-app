@@ -47,10 +47,11 @@ const SignUp = () => {
     setIsLoading(true);
   
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        data
-      );
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, data);
+      // const response = await axios.post(
+      //   "http://localhost:5000/api/auth/register",
+      //   data
+      // );
   
       if (response.status === 201) {
         toast.success(response?.data?.message || "Account created successfully!");

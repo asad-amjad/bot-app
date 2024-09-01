@@ -38,8 +38,9 @@ const SignIn = () => {
     setIsLoading(true);
   
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", data);
-  
+      // const response = await axios.post("https://hungry-rafaelita-i-assad-b5825f7f.koyeb.app/api/auth/login", data);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, data);
+
       if (response.status === 200) {
         const { token } = response.data.data;
         localStorage.setItem("authToken", token);
