@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios"; // Import Axios
 import SubmitButton from "../../components/button/Button";
 import rfpLogo from "../../assets/rfp.png";
 import styles from "./Auth.module.css";
@@ -32,32 +33,34 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      firstName: "John",
+      lastName: "Doe",
+      email: "john.doe@example.com",
+      mobileNumber: "1234567890",
+      username: "johndoe",
+      password: "password123",
+    },
   });
 
   const handleSignUp = async (data) => {
     setIsLoading(true);
   
     try {
-      const response = await fetch("https://api.vectorshift.ai/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        data
+      );
   
-      const result = await response.json();
-  
-      if (response.ok) {
-        toast.success("Account created! Please verify your email.");
-        navigate("/"); // Redirect to login page
-      } else if (response.status === 400) {
-        toast.error("Invalid input. Please check your details.");
+      if (response.status === 201) {
+        toast.success(response?.data?.message || "Account created successfully!");
+        navigate("/sign-in"); // Redirect to login page
       } else {
-        toast.error(`Error: ${result.detail}`);
+        toast.error(response?.data?.message || "An error occurred");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again later.");
+      console.log(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "An unexpected error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -89,10 +92,14 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Enter your first name"
-                    className={`form-control ${errors.firstName ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.firstName ? "is-invalid" : ""
+                    }`}
                     {...register("firstName")}
                   />
-                  <div className="invalid-feedback">{errors.firstName?.message}</div>
+                  <div className="invalid-feedback">
+                    {errors.firstName?.message}
+                  </div>
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -101,10 +108,14 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Enter your last name"
-                    className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.lastName ? "is-invalid" : ""
+                    }`}
                     {...register("lastName")}
                   />
-                  <div className="invalid-feedback">{errors.lastName?.message}</div>
+                  <div className="invalid-feedback">
+                    {errors.lastName?.message}
+                  </div>
                 </Form.Group>
               </Col>
             </Row>
@@ -115,10 +126,14 @@ const SignUp = () => {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className={`form-control ${errors.email ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.email ? "is-invalid" : ""
+                    }`}
                     {...register("email")}
                   />
-                  <div className="invalid-feedback">{errors.email?.message}</div>
+                  <div className="invalid-feedback">
+                    {errors.email?.message}
+                  </div>
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -127,10 +142,14 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Enter your mobile number"
-                    className={`form-control ${errors.mobileNumber ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.mobileNumber ? "is-invalid" : ""
+                    }`}
                     {...register("mobileNumber")}
                   />
-                  <div className="invalid-feedback">{errors.mobileNumber?.message}</div>
+                  <div className="invalid-feedback">
+                    {errors.mobileNumber?.message}
+                  </div>
                 </Form.Group>
               </Col>
             </Row>
@@ -141,10 +160,14 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Choose a username"
-                    className={`form-control ${errors.username ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.username ? "is-invalid" : ""
+                    }`}
                     {...register("username")}
                   />
-                  <div className="invalid-feedback">{errors.username?.message}</div>
+                  <div className="invalid-feedback">
+                    {errors.username?.message}
+                  </div>
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -153,10 +176,14 @@ const SignUp = () => {
                   <input
                     type="password"
                     placeholder="Choose a password"
-                    className={`form-control ${errors.password ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.password ? "is-invalid" : ""
+                    }`}
                     {...register("password")}
                   />
-                  <div className="invalid-feedback">{errors.password?.message}</div>
+                  <div className="invalid-feedback">
+                    {errors.password?.message}
+                  </div>
                 </Form.Group>
               </Col>
             </Row>

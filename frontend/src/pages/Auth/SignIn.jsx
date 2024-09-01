@@ -5,9 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 import SubmitButton from "../../components/button/Button";
 import rfpLogo from "../../assets/rfp.png";
 import styles from "./Auth.module.css";
+import { useAuth } from "../../../AuthContext"; // Import useAuth
 
 // Define validation schema using yup
 const schema = yup.object().shape({
@@ -17,6 +19,7 @@ const schema = yup.object().shape({
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useAuth(); // Get setIsAuthenticated from context
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -25,39 +28,36 @@ const SignIn = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      email: "john.doe@example.com",
+      password: "password123",
+    },
   });
 
   const handleSignIn = async (data) => {
     setIsLoading(true);
   
     try {
-      const response = await fetch("https://api.vectorshift.ai/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await axios.post("http://localhost:5000/api/auth/login", data);
   
-      const result = await response.json();
-  
-      if (response.ok) {
-        if (result.isEmailVerified) {
-          localStorage.setItem("authToken", result.token);
-          toast.success("Login successful!");
-          navigate("/dashboard");
-        } else {
-          toast.warn("Please verify your email before logging in.");
-        }
-      } else if (response.status === 401) {
-        toast.error("Invalid email or password.");
-      } else if (response.status === 403) {
-        toast.error("Email not verified.");
+      if (response.status === 200) {
+        const { token } = response.data.data;
+        localStorage.setItem("authToken", token);
+        setIsAuthenticated(true); // Update auth state in context
+        toast.success("Login successful!");
+        navigate("/dashboard"); // Redirect to dashboard
       } else {
-        toast.error(`Error: ${result.detail}`);
+        toast.error("Invalid credentials. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again later.");
+      if (error.response) {
+        const errorMessage = error.response.data.message || "An error occurred. Please try again.";
+        toast.error(errorMessage);
+      } else if (error.request) {
+        toast.error("No response from the server. Please try again later.");
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -85,7 +85,7 @@ const SignIn = () => {
             <Form.Group controlId="email" className={"mb-4"}>
               <Form.Label>Email:</Form.Label>
               <input
-                type="text"
+                type="email"
                 placeholder="Enter your email"
                 className={`form-control ${errors.email ? "is-invalid" : ""}`}
                 {...register("email")}
@@ -98,7 +98,9 @@ const SignIn = () => {
               <input
                 type="password"
                 placeholder="Enter your password"
-                className={`form-control ${errors.password ? "is-invalid" : ""}`}
+                className={`form-control ${
+                  errors.password ? "is-invalid" : ""
+                }`}
                 {...register("password")}
               />
               <div className="invalid-feedback">{errors.password?.message}</div>
@@ -111,9 +113,11 @@ const SignIn = () => {
               label="Sign In"
             />
 
-            {/* Link to Sign-Up Page */}
             <div className="text-center mt-4">
               <Link to="/sign-up">Don't have an account? Join now</Link>
+            </div>
+            <div className="text-center mt-2">
+              <Link to="/forgot-password">Forgot your password?</Link>
             </div>
           </Form>
         </CardBody>
