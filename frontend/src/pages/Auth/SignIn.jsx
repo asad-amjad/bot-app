@@ -116,9 +116,9 @@ const SignIn = () => {
             <div className="text-center mt-4">
               <Link to="/sign-up">Don't have an account? Join now</Link>
             </div>
-            <div className="text-center mt-2">
+            {/* <div className="text-center mt-2">
               <Link to="/forgot-password">Forgot your password?</Link>
-            </div>
+            </div> */}
           </Form>
         </CardBody>
       </Card>
