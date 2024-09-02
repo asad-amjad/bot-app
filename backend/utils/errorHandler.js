@@ -1,5 +1,3 @@
-// backend/utils/errorHandler.js
-
 const errorHandler = (res, error, statusCode = 500) => {
   console.error('Error:', error.message);
 
@@ -16,7 +14,6 @@ const errorHandler = (res, error, statusCode = 500) => {
     success: false,
     message: error.message,
   });
-  // throw new Error(error.message || 'Server Error');
 };
 
 module.exports = errorHandler;

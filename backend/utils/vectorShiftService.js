@@ -1,5 +1,3 @@
-// backend/utils/vectorShiftService.js
-
 const axios = require('axios');
 
 const vectorShiftAPI = axios.create({
