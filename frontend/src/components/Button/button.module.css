@@ -1,5 +1,5 @@
 
-.btn-submit-primary {
+.btnCustomPrimary {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
   color: white;
@@ -8,16 +8,16 @@
   font-weight: bold;
 }
 
-.btn-submit-primary:hover {
+.btnCustomPrimary:hover {
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
-.btn-submit-primary:disabled {
-  background-color: rgba(58, 123, 213, 0.65);
+.btnCustomPrimary:disabled {
+  background-color: rgb(0, 105, 253);
   border-color: rgba(58, 123, 213, 0.65);
 }
 
-.btn-submit-primary:focus {
+.btnCustomPrimary:focus {
   background-color: var(--accent-color);
 }

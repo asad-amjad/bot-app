@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardBody, Form, Row, Col } from "react-bootstrap";
+import { Card, CardBody, Form, Row, Col, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -193,6 +193,15 @@ const SignUp = () => {
               type="submit"
               isLoading={isLoading}
               label="Sign Up"
+              loadingLabel={
+                <Spinner
+                  style={{
+                    fontSize: "10px",
+                    color: "white",
+                    marginBottom: "-5px",
+                  }}
+                />
+              }
             />
 
             {/* Link to Sign-In Page */}

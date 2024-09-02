@@ -1,26 +1,28 @@
 import PropTypes from "prop-types";
-// import "./button.";
+// import "./button.css";
+import styles from "./button.module.css";
 
-const SubmitButton = ({ id, onClick, isLoading, label, className = "" }) => {
+const SubmitButton = ({ id, onClick, isLoading,loadingLabel, label, className = "" }) => {
   return (
     <button
       id={id}
       onClick={onClick}
       disabled={isLoading}
-      className={`btn btn-submit-primary w-100 py-3 ${className}`}
+      className={`btn ${styles.btnCustomPrimary} w-100 py-3 ${className}`}
     >
-      {isLoading ? "Loading..." : label}
+      {isLoading ? loadingLabel : label}
     </button>
   );
 };
 
-// SubmitButton.propTypes = {
-//   onClick: PropTypes.func.isRequired,
-//   isLoading: PropTypes.bool,
-//   label: PropTypes.string,
-//   className: PropTypes.string,
-//   id: PropTypes.string,
-// };
+SubmitButton.propTypes = {
+  onClick: PropTypes.func,
+  isLoading: PropTypes.bool,
+  label: PropTypes.string,
+  className: PropTypes.string,
+  id: PropTypes.string,
+  loadingLabel: PropTypes.string,
+};
 
 // SubmitButton.defaultProps = {
 //   isLoading: false,

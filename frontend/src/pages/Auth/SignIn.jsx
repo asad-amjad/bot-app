@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { useState } from "react";
-import { Card, CardBody, Form } from "react-bootstrap";
+import { Card, CardBody, Form, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate, Link } from "react-router-dom";
@@ -36,9 +36,12 @@ const SignIn = () => {
 
   const handleSignIn = async (data) => {
     setIsLoading(true);
-  
+
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, data);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+        data
+      );
 
       if (response.status === 200) {
         const { token } = response.data.data;
@@ -51,7 +54,8 @@ const SignIn = () => {
       }
     } catch (error) {
       if (error.response) {
-        const errorMessage = error.response.data.message || "An error occurred. Please try again.";
+        const errorMessage =
+          error.response.data.message || "An error occurred. Please try again.";
         toast.error(errorMessage);
       } else if (error.request) {
         toast.error("No response from the server. Please try again later.");
@@ -62,7 +66,6 @@ const SignIn = () => {
       setIsLoading(false);
     }
   };
-  
 
   return (
     <div
@@ -110,7 +113,16 @@ const SignIn = () => {
               className="mt-4 w-100"
               type="submit"
               isLoading={isLoading}
-              label="Sign In"
+              label="Sign in"
+              loadingLabel={
+                <Spinner
+                  style={{
+                    fontSize: "10px",
+                    color: "white",
+                    marginBottom: "-5px",
+                  }}
+                />
+              }
             />
 
             <div className="text-center mt-4">

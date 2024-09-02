@@ -2,7 +2,7 @@ import { useState } from "react";
 import Joyride from "react-joyride";
 import { marked } from "marked";
 import { markdownContent } from "../../markdownData";
-import { Card, CardBody, Container } from "react-bootstrap";
+import { Card, CardBody, Container, Spinner } from "react-bootstrap";
 import LeftPanel from "../../components/LeftPanel";
 import styles from "./Dashboard.module.css";
 import { FiDownload } from "react-icons/fi";
@@ -122,9 +122,10 @@ const Dashboard = () => {
                 />
                 <div className="h-25 mt-4">
                   {loading && (
-                    <div className="spinner-border" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </div>
+                    // <div className="spinner-border" role="status">
+                    //   <span className="visually-hidden">Loading...</span>
+                    // </div>
+                    <Spinner animation="grow"/>
                   )}
                 </div>
               </div>

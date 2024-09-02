@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardBody, Badge, CloseButton, Form, Alert } from "react-bootstrap";
+import { Card, CardBody, Badge, CloseButton, Form, Alert, Spinner } from "react-bootstrap";
 import styles from "./LeftPanel.module.css";
 import Tooltip from "../Tooltip";
 import SubmitButton from "../Button";
@@ -131,6 +131,15 @@ const LeftPanel = ({ handleQuerySubmit, handleFileUpload, loading, response }) =
             onClick={handleQuerySubmit}
             isLoading={loading}
             label="Run"
+            loadingLabel={
+              <Spinner
+                style={{
+                  fontSize: "10px",
+                  color: "white",
+                  marginBottom: "-5px",
+                }}
+              />
+            }
           />
         </div>
       </CardBody>
