@@ -24,10 +24,10 @@ const SignIn = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(signInSchema),
-    defaultValues: {
-      email: "john.doe@example.com",
-      password: "password123",
-    },
+    // defaultValues: {
+    //   email: "john.doe@example.com",
+    //   password: "password123",
+    // },
   });
 
   const handleSignIn = async (data) => {

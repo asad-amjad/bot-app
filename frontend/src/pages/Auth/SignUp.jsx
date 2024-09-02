@@ -22,14 +22,14 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(signUpSchema),
-    defaultValues: {
-      firstName: "John",
-      lastName: "Doe",
-      email: "john.doe@example.com",
-      mobileNumber: "1234567890",
-      username: "johndoe",
-      password: "password123",
-    },
+    // defaultValues: {
+    //   firstName: "John",
+    //   lastName: "Doe",
+    //   email: "john.doe@example.com",
+    //   mobileNumber: "1234567890",
+    //   username: "johndoe",
+    //   password: "password123",
+    // },
   });
 
   const handleSignUp = async (data) => {
