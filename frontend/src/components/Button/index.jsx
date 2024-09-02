@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-// import "./button.css";
 import styles from "./button.module.css";
 
 const SubmitButton = ({ id, onClick, isLoading,loadingLabel, label, className = "" }) => {
@@ -23,12 +22,5 @@ SubmitButton.propTypes = {
   id: PropTypes.string,
   loadingLabel: PropTypes.string,
 };
-
-// SubmitButton.defaultProps = {
-//   isLoading: false,
-//   label: "Submit",
-//   className: "",
-//   id: "",
-// };
 
 export default SubmitButton;
