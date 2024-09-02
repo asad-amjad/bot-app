@@ -1,27 +1,16 @@
+import axios from "axios";
+
 import { useState } from "react";
-import { Card, CardBody, Form, Row, Col, Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios"; // Import Axios
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Card, CardBody, Col, Form, Row, Spinner } from "react-bootstrap";
+
+import { signUpSchema } from "./validation";
 import SubmitButton from "../../components/Button";
 import rfpLogo from "../../assets/rfp.png";
 import styles from "./Auth.module.css";
-import { toast } from "react-toastify";
-
-// Define validation schema using yup
-const schema = yup.object().shape({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required("Last Name is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
-  mobileNumber: yup.string().required("Mobile Number is required"),
-  username: yup.string().required("Username is required"),
-  password: yup
-    .string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
-});
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -32,7 +21,7 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signUpSchema),
     defaultValues: {
       firstName: "John",
       lastName: "Doe",
@@ -45,28 +34,30 @@ const SignUp = () => {
 
   const handleSignUp = async (data) => {
     setIsLoading(true);
-  
+
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, data);
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/auth/register",
-      //   data
-      // );
-  
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/auth/register`,
+        data
+      );
+
       if (response.status === 201) {
-        toast.success(response?.data?.message || "Account created successfully!");
+        toast.success(
+          response?.data?.message || "Account created successfully!"
+        );
         navigate("/sign-in"); // Redirect to login page
       } else {
         toast.error(response?.data?.message || "An error occurred");
       }
     } catch (error) {
       console.log(error?.response?.data?.message);
-      toast.error(error?.response?.data?.message || "An unexpected error occurred");
+      toast.error(
+        error?.response?.data?.message || "An unexpected error occurred"
+      );
     } finally {
       setIsLoading(false);
     }
   };
-  
 
   return (
     <div

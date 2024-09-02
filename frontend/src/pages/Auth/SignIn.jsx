@@ -1,21 +1,17 @@
-import * as yup from "yup";
-import { useState } from "react";
-import { Card, CardBody, Form, Spinner } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import axios from "axios";
+
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+import { useNavigate, Link } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Card, CardBody, Form, Spinner } from "react-bootstrap";
+
+import { useAuth } from "../../../AuthContext";
+import { signInSchema } from "./validation";
 import SubmitButton from "../../components/Button";
 import rfpLogo from "../../assets/rfp.png";
 import styles from "./Auth.module.css";
-import { useAuth } from "../../../AuthContext";
-
-// Define validation schema using yup
-const schema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup.string().required("Password is required"),
-});
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -27,7 +23,7 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signInSchema),
     defaultValues: {
       email: "john.doe@example.com",
       password: "password123",
@@ -126,7 +122,7 @@ const SignIn = () => {
             />
 
             <div className="text-center mt-4">
-              <Link to="/sign-up">Don't have an account? Join now</Link>
+              <Link to="/sign-up">Don&apos;t have an account? Join now</Link>
             </div>
             {/* <div className="text-center mt-2">
               <Link to="/forgot-password">Forgot your password?</Link>

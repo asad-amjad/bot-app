@@ -73,9 +73,3 @@ textarea, input, select {
 textarea::placeholder, input::placeholder {
   color: var(--border-color);
 }
-/* body{
-  
-  height: 10vh;
-}
- */
-
